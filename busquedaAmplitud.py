@@ -11,13 +11,13 @@ def buscar_camino_bfs(matriz, max_profundidad):
                 if matriz[i][j] == 1:  # No considerar paredes
                     continue
                 vecinos = []
-                if i > 0 and matriz[i-1][j] != 1:  # Arriba
+                if i > 0 and matriz[i-1][j] != 1:  
                     vecinos.append((i-1, j))
-                if i < len(matriz) - 1 and matriz[i+1][j] != 1:  # Abajo
+                if i < len(matriz) - 1 and matriz[i+1][j] != 1: 
                     vecinos.append((i+1, j))
-                if j > 0 and matriz[i][j-1] != 1:  # Izquierda
+                if j > 0 and matriz[i][j-1] != 1:  
                     vecinos.append((i, j-1))
-                if j < len(matriz[i]) - 1 and matriz[i][j+1] != 1:  # Derecha
+                if j < len(matriz[i]) - 1 and matriz[i][j+1] != 1:  
                     vecinos.append((i, j+1))
                 grafo[(i, j)] = vecinos
         return grafo
@@ -118,4 +118,4 @@ matriz = [
 """
 
 
-#buscar_camino_bfs(matriz, 5)
+

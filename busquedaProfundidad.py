@@ -85,8 +85,8 @@ def busqueda_profundidad(matriz, arbol_recibido=None, limite_expansiones=8):
         arbol = {}
         nodos = []
 
-    movimientos = [(-1, 0), (0, 1), (1, 0), (0, -1)]  # Arriba, Derecha, Abajo, Izquierda
-    grafo = nx.DiGraph()  # Grafo dirigido para visualizar el árbol
+    movimientos = [(-1, 0), (0, 1), (1, 0), (0, -1)]  
+    grafo = nx.DiGraph()  
 
     grafo.add_node(f"{inicio}")
     mostrar_arbol()
@@ -97,7 +97,7 @@ def busqueda_profundidad(matriz, arbol_recibido=None, limite_expansiones=8):
     return gano
 
 
-# Ejemplo de uso
+
 if __name__ == "__main__":
     matriz = [
         [0, 0, 0, 0],
@@ -105,14 +105,14 @@ if __name__ == "__main__":
         [2, 1, 0, 0],
         [0, 0, 0, 1]
     ]
-    arbol_inicial = None  # O un árbol previamente generado
+    arbol_inicial = None  
     """
     plt.ion()  # Activar modo interactivo
     arbol_resultante = busqueda_profundidad(matriz, arbol_recibido=arbol_inicial, limite_expansiones=8)
     plt.ioff()  # Desactivar modo interactivo
     plt.show()  # Mostrar el árbol final
     """
-    #print(arbol_resultante)
+    
     """
     print("Árbol de búsqueda:")
     for nodo, padre in arbol_resultante.items():

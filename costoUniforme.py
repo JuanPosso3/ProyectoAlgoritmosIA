@@ -10,7 +10,6 @@ def busqueda_costo_uniforme_con_visualizacion(matriz, mapa_padres, visitados, ma
     contador_iteraciones = 0
     gano=False
 
-    # Encontrar las posiciones de inicio y objetivo
     for fila in range(filas):
         for columna in range(columnas):
             if matriz[fila][columna] == 2:
@@ -21,10 +20,8 @@ def busqueda_costo_uniforme_con_visualizacion(matriz, mapa_padres, visitados, ma
     if not inicio or not objetivo:
         return "Inicio o objetivo no definidos en la matriz", mapa_padres
 
-    # Inicializar el árbol de búsqueda
     grafo = nx.DiGraph()
 
-    # Configuración inicial de visitados y mapa de padres
     def eliminar_nodos_antiguos(visitados):
         if len(visitados) <= 2:
             return set()
@@ -104,7 +101,7 @@ def busqueda_costo_uniforme_con_visualizacion(matriz, mapa_padres, visitados, ma
 
     cola_prioridad = configurar_cola_prioridad(mapa_padres)
 
-    # Activar visualización interactiva
+
     plt.ion()
 
     while cola_prioridad and contador_iteraciones < max_iteraciones:
@@ -114,7 +111,7 @@ def busqueda_costo_uniforme_con_visualizacion(matriz, mapa_padres, visitados, ma
         visitados.add(actual)
         contador_iteraciones += 1
 
-        # Agregar nodo y conexión al grafo
+        
         if actual not in grafo:
             grafo.add_node(str(actual))
         if mapa_padres[actual] is not None:
@@ -122,7 +119,7 @@ def busqueda_costo_uniforme_con_visualizacion(matriz, mapa_padres, visitados, ma
 
         mostrar_arbol_jerarquico(grafo)
 
-        # Si llegamos al objetivo
+        
         if actual == objetivo:
             gano=True
             plt.ioff()
@@ -130,7 +127,7 @@ def busqueda_costo_uniforme_con_visualizacion(matriz, mapa_padres, visitados, ma
             plt.show()
             return reconstruir_camino(mapa_padres, inicio, objetivo)
 
-        # Explorar vecinos
+        
         for vecino in obtener_vecinos(actual, filas, columnas):
             if vecino not in visitados and matriz[vecino[0]][vecino[1]] != 1:
                 heapq.heappush(cola_prioridad, (costo + 1, vecino))
@@ -139,10 +136,10 @@ def busqueda_costo_uniforme_con_visualizacion(matriz, mapa_padres, visitados, ma
 
     plt.ioff()
     plt.show()
-    return gano # No se encontró el camino
+    return gano 
 
 if __name__ == "__main__":
-    # Matriz de ejemplo
+    
     """
     matriz = [
         [0,0,0,0],
@@ -172,7 +169,7 @@ if __name__ == "__main__":
     #visitados = None
     #max_iteraciones = 3
 
-    # Ejecutar el algoritmo con visualización
+    
     #pasos = busqueda_costo_uniforme_con_visualizacion(matriz, mapa_padres, visitados, max_iteraciones)
     #print(pasos)
     """
